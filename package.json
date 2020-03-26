@@ -1,0 +1,50 @@
+{
+  "name": "template-generic-typescript",
+  "version": "0.1.0",
+  "description": "TBC",
+  "main": "dist/index.js",
+  "repository": "git@github.com:alexcanessa/global-config-file.git",
+  "author": "Alex Canessa <canessa.alex@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "type-coverage": "node ./dist/bin/typescript-coverage-report",
+    "prepublish": "yarn build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^2.0.2",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{js,ts,tsx,json,md,css}": [
+      "prettier --write"
+    ]
+  }
+}
